@@ -1,5 +1,5 @@
 from flask import Flask
-from config import Configuration
+from .data.config import Configuration
 
 app = Flask(__name__, template_folder='templates')
 
@@ -12,4 +12,4 @@ app.config['SECRET_KEY'] = SECRET_KEY
 app.config.from_object(Configuration)
 
 
-from application import views
+from application.weather import routes

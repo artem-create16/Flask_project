@@ -26,3 +26,4 @@ def get_currently_weather(city):
 
     except Exception as e:
         print("Exception (forecast):", e)
+

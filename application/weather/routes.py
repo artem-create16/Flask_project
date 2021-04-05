@@ -1,32 +1,22 @@
-from flask import render_template, redirect, url_for
+from flask import Blueprint
 
 from application import app
-from .utils.show_weather import get_currently_weather, get_weather_forecast
-from .form import FormWeather
+from .controller import (show_form, show_weather_for_show_forecast_rout,
+                         show_weather_for_show_currently_rout)
+
+weather_blueprint = Blueprint('weather', __name__, template_folder='templates')
 
 
 @app.route('/', methods=['POST', 'GET'])
 def greeting():
-    form = FormWeather()
-    try:
-        if form.validate_on_submit():
-            city = str(form.city.data)
-            if form.forecast.data == True:
-                return redirect(url_for('show_forecast', city=city))
-            return redirect(url_for('show_currently_weather', city=city))
-
-    except Exception as e:
-        print(str(e))
-    return render_template('weather/templates/form.html', html_form=form)
+    return show_form()
 
 
 @app.route('/forecast/<city>')
 def show_forecast(city):
-    result = get_weather_forecast(city)
-    return render_template('weather/templates/forecast.html', town=city, result=result)
+    return show_weather_for_show_forecast_rout(city)
 
 
 @app.route('/weather/<city>')
 def show_currently_weather(city):
-    result = get_currently_weather(city)
-    return render_template('weather.html', town=city, result=result)
+    return show_weather_for_show_currently_rout(city)

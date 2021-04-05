@@ -1,15 +1,13 @@
 from flask import Flask
+
 from .data.config import Configuration
+from .data.config import SECRET_KEY
 
 app = Flask(__name__, template_folder='templates')
 
-import os
-
-
-SECRET_KEY = os.urandom(32)
+from .weather.routes import weather_blueprint
+from application.weather import routes
 app.config['SECRET_KEY'] = SECRET_KEY
 
 app.config.from_object(Configuration)
-
-
-from application.weather import routes
+app.register_blueprint(weather_blueprint)

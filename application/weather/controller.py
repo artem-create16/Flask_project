@@ -8,7 +8,7 @@ def show_form():
     try:
         if form.validate_on_submit():
             city = str(form.city.data)
-            if form.forecast.data == True:
+            if form.forecast.data:
                 return redirect(url_for('show_forecast', city=city))
             return redirect(url_for('show_currently_weather', city=city))
 

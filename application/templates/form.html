@@ -1,0 +1,15 @@
+<h1>Hi, i can show you the weather</h1>
+    <form action="" method="post">
+            {{html_form.hidden_tag() }}
+        <div>
+            {{ html_form.city.label }}
+            {{ html_form.city() }}
+        </div>
+        <div>
+            {{ html_form.forecast.label }}
+            {{ html_form.forecast() }}
+        </div>
+        <div>
+            {{ html_form.submit() }}
+        </div>
+    </form>

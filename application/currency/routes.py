@@ -1,12 +1,11 @@
-from flask import render_template
-
 from flask import Blueprint
 
+from .controller import show_form
 
 currency_blueprint = Blueprint('currency', __name__, template_folder='templates')
 
 
 @currency_blueprint.route('/scam', methods=['POST', 'GET'])
 def scam():
-    list_ = ['Чебурашка', 'Крокодил', 'Мышь']
-    return render_template('form_currency.html', option=list_)
+    return show_form()
+

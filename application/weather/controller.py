@@ -14,7 +14,7 @@ def show_form():
 
     except Exception as e:
         print(str(e))
-    return render_template('form_currency.html', html_form=form)
+    return render_template('form.html', html_form=form)
 
 
 def show_weather_for_show_forecast_route(city):

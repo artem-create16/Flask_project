@@ -1,21 +1,20 @@
-
 <h1>Сurrency exchanger </h1>
     <title>Currency</title>
     <form action="" method="post">
             {{html_form.hidden_tag()}}
         <div>
             {{ html_form.first_choice.label }}
-              <select name="select1">
-                    {% for opt in option.keys() %}
-                    <option>{{ opt }}</option>
-                    {% endfor %}
-              </select>
+            <select name="select1">
+                {% for opt in option.keys() %}
+                <option>{{ opt }}</option>
+                {% endfor %}
+            </select>
 
             {{ html_form.second_choice.label }}
-            <select name="select1">
-                    {% for opt in option.keys() %}
-                    <option>{{ opt }}</option>
-                    {% endfor %}
+            <select name="select2">
+                {% for opt in option.keys() %}
+                <option>{{ opt }}</option>
+                {% endfor %}
             </select>
         </div>
         <div>

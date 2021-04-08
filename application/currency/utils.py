@@ -1,7 +1,7 @@
 import requests
 
 
-def get_the_current_value_of_the_currency():
+def get_currency():
     request = requests.get('https://www.cbr-xml-daily.ru/daily_json.js')
     answer = request.json()
     dict_with_currency = {}

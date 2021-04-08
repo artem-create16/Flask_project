@@ -5,15 +5,15 @@ from .form import FormWeather
 
 def show_form():
     form = FormWeather()
-    try:
-        if form.validate_on_submit():
-            city = str(form.city.data)
-            if form.forecast.data:
-                return redirect(url_for('weather.show_forecast', city=city))
-            return redirect(url_for('weather.show_currently_weather', city=city))
 
-    except Exception as e:
-        print(str(e))
+    if form.validate_on_submit():
+        city = str(form.city.data)
+
+        if form.forecast.data:
+            return redirect(url_for('weather.show_forecast', city=city))
+
+        return redirect(url_for('weather.show_currently_weather', city=city))
+
     return render_template('form.html', html_form=form)
 
 

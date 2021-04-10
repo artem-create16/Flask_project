@@ -1,19 +1,16 @@
 import requests
 
 
-def return_all_currency():
-    request = requests.get('https://www.cbr-xml-daily.ru/daily_json.js')
+def return_currency(*args):
+    link = 'https://www.cbr-xml-daily.ru/daily_json.js'
+    request = requests.get(link)
     answer = request.json()['Valute']
     dict_with_currency = {}
-    for i in answer.keys():
-        dict_with_currency[answer[i]['Name']] = answer[i]['Value']
-    return dict_with_currency
+    for currency in answer:
+        dict_with_currency[answer[currency]['Name']] = answer[currency]['Value']
+    if args:
+        list_with_chosen_currency = [dict_with_currency[choice] for choice in args]
+        return list_with_chosen_currency
+    else:
+        return dict_with_currency
 
-
-def get_currency(choice1, choice2):
-    request = requests.get('https://www.cbr-xml-daily.ru/daily_json.js')
-    answer = request.json()['Valute']
-    dict_with_currency = {}
-    for i in answer.keys():
-        dict_with_currency[answer[i]['Name']] = answer[i]['Value']
-    return dict_with_currency[choice1], dict_with_currency[choice2]

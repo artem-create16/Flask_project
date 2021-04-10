@@ -3,8 +3,9 @@ import requests
 
 def get_weather_forecast(city):
     result_forecast_weather = []
+    link = 'http://api.openweathermap.org/data/2.5/forecast'
     try:
-        res = requests.get("http://api.openweathermap.org/data/2.5/forecast",
+        res = requests.get(link,
                             params={'q': city, 'units': 'metric', 'lang': 'ru',
                             'APPID': '271b7de2d6a5fced172919a774f90d00'})
         data = res.json()
@@ -17,8 +18,9 @@ def get_weather_forecast(city):
 
 
 def get_currently_weather(city):
+    link = 'http://api.openweathermap.org/data/2.5/weather'
     try:
-        result = requests.get("http://api.openweathermap.org/data/2.5/weather",
+        result = requests.get(link,
                               params={'q': city, 'units': 'metric', 'lang': 'ru',
                                       'APPID': '271b7de2d6a5fced172919a774f90d00'})
         data = result.json()

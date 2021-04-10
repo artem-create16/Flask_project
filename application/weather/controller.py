@@ -17,11 +17,11 @@ def show_form():
     return render_template('form.html', html_form=form)
 
 
-def show_weather_for_show_forecast_route(city):
+def controller_forecast_route(city):
     result = get_weather_forecast(city)
     return render_template('forecast.html', town=city, result=result)
 
 
-def show_weather_for_show_currently_route(city):
+def controller_show_currently_route(city):
     result = get_currently_weather(city)
     return render_template('weather.html', town=city, result=result)

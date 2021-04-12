@@ -12,5 +12,3 @@ def currency_main():
 @currency_blueprint.route('/currency/show/<choice1>/<choice2>')
 def show_currency(choice1, choice2):
     return controller_show_currency(choice1, choice2)
-
-

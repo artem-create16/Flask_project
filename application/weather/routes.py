@@ -11,11 +11,13 @@ def greeting():
     return show_form()
 
 
+@weather_blueprint.errorhandler(404)
 @weather_blueprint.route('/weather/forecast/<city>')
 def show_forecast(city):
     return controller_forecast_route(city)
 
 
+@weather_blueprint.errorhandler(404)
 @weather_blueprint.route('/weather/<city>')
 def show_currently_weather(city):
     return controller_show_currently_route(city)
